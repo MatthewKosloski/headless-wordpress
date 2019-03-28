@@ -11,6 +11,20 @@ This is a reverse engineering of [headless-wp-starter](https://github.com/postli
 
 ## Usage
 
+1. Create an environment variable file in root directory:
+
+```
+MYSQL_ROOT_PASSWORD=
+MYSQL_DATABASE=
+MYSQL_USER=
+MYSQL_PASSWORD=
+
+WORDPRESS_DB_USER=
+WORDPRESS_DB_PASSWORD=
+```
+
+In the above, `MYSQL_USER` and `WORDPRESS_DB_USER` must be the same and `MYSQL_PASSWORD` and `WORDPRESS_DB_PASSWORD` must be the same.
+
 1. Start the services in detached mode:
 
 ```
