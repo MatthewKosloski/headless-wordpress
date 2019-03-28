@@ -25,13 +25,13 @@ WORDPRESS_DB_PASSWORD=
 
 In the above, `MYSQL_USER` and `WORDPRESS_DB_USER` must be the same and `MYSQL_PASSWORD` and `WORDPRESS_DB_PASSWORD` must be the same.
 
-1. Start the services in detached mode:
+2. Start the services in detached mode:
 
 ```
     docker-compose up -d
 ```
 
-2. Stop the services:
+3. Stop the services:
 
 ```
     docker-compose down
