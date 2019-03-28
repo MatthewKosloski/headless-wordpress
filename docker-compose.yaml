@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    image: mysql:5.7
+    restart: always
+    env_file: ./.env
+    volumes:
+      - db_data:/var/lib/mysql
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    env_file: ./.env
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+    ports:
+      - '8080:80'
+  wordpress:
+    container_name: wordpress
+    image: wordpress:latest
+    restart: always
+    env_file: ./.env
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+    depends_on:
+      - db
+    ports:
+      - '8000:80'
+    volumes:
+      - ./wordpress:/var/www/html
+  client:
+    container_name: client
+    command: bash -c 'npm install && npm run build && npm start'
+    ports:
+      - '3000:3000'
+    image: node
+    volumes:
+      - ./client:/home/node/app
+    working_dir: /home/node/app
+volumes:
+  db_data:
